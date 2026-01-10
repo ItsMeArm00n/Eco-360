@@ -3,16 +3,17 @@
 import React from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { motion } from 'framer-motion';
+import { motion, HTMLMotionProps } from 'framer-motion';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CardProps extends Omit<HTMLMotionProps<"div">, "children"> {
   title?: string;
   description?: string;
   delay?: number;
+  children?: React.ReactNode;
 }
 
 export function Card({ className, title, description, children, delay = 0, ...props }: CardProps) {
