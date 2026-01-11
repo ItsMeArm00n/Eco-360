@@ -131,7 +131,7 @@ export default function EcoLearn() {
                         <p className="text-lg text-slate-600 dark:text-slate-300 font-medium max-w-md">{lesson.subtitle}</p>
                      </div>
                      <img 
-                        src={getImageUrl(lesson.image_keywords?.[0] || 'nature')} 
+                        src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80"
                         alt="Header"
                         className="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay hover:opacity-30 transition-opacity duration-700"
                     />
@@ -161,7 +161,7 @@ export default function EcoLearn() {
                 {/* Action Card with Image Background */}
                 <div className="group relative bg-black rounded-3xl overflow-hidden min-h-[250px] flex items-end p-6">
                     <img 
-                        src={getImageUrl(lesson.image_keywords?.[1] || 'action')} 
+                        src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=800&q=80"
                         alt="Action"
                         className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700"
                     />
