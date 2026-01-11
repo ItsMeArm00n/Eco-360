@@ -37,8 +37,10 @@ export default function EcoLearn() {
   };
 
   const getImageUrl = (keyword: string) => {
-    // using loremflickr to get real existing images based on keywords
-    return `https://loremflickr.com/800/600/${encodeURIComponent(keyword)}/all`;
+    // using pollinations.ai for reliable, AI-generated images matched to the topic
+    // This is more reliable than loremflickr and provides context-aware visuals
+    const cleanKeyword = keyword.replace(/\s+/g, '-'); // simple cleanup
+    return `https://image.pollinations.ai/prompt/realistic-detailed-${encodeURIComponent(keyword)}-nature-sustainability?width=800&height=600&nologo=true&model=flux`;
   };
 
   return (
