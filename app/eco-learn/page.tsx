@@ -37,9 +37,10 @@ export default function EcoLearn() {
   };
 
   const getImageUrl = (keyword: string) => {
-    // Falls back to Unsplash Source for high-quality REAL stock photos
-    // We add specific filters 'nature,sustainability' to ensure relevance even if keyword is obscure
-    return `https://source.unsplash.com/800x600/?nature,sustainability,${encodeURIComponent(keyword)}`;
+    // source.unsplash.com is often slow or deprecated. 
+    // LoremFlickr provides reliable Creative Commons photos (NOT AI generated).
+    // We append 'nature' to ensure context.
+    return `https://loremflickr.com/800/600/nature,${encodeURIComponent(keyword)}`;
   };
 
   return (
