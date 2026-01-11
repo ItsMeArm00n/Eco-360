@@ -60,8 +60,17 @@ export function WeatherProvider({ children }: { children: React.ReactNode }) {
 
       // 3. Get Gemini Insight
       const insight = await getGeminiInsight(weatherJson);
+      
+      // If valid insight, set it. If null (error), set a fallback object so UI doesn't hang.
       if (insight) {
         setAiInsight(insight);
+      } else {
+         setAiInsight({
+            summary: "Unable to generate AI insight at this time.",
+            recommended: [],
+            avoid: [],
+            history: "Service temporarily unavailable."
+         });
       }
       
     } catch (err) {
