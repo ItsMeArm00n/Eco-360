@@ -37,10 +37,9 @@ export default function EcoLearn() {
   };
 
   const getImageUrl = (keyword: string) => {
-    // using pollinations.ai for reliable, AI-generated images matched to the topic
-    // This is more reliable than loremflickr and provides context-aware visuals
-    const cleanKeyword = keyword.replace(/\s+/g, '-'); // simple cleanup
-    return `https://image.pollinations.ai/prompt/realistic-detailed-${encodeURIComponent(keyword)}-nature-sustainability?width=800&height=600&nologo=true&model=flux`;
+    // Falls back to Unsplash Source for high-quality REAL stock photos
+    // We add specific filters 'nature,sustainability' to ensure relevance even if keyword is obscure
+    return `https://source.unsplash.com/800x600/?nature,sustainability,${encodeURIComponent(keyword)}`;
   };
 
   return (
