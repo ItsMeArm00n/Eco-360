@@ -48,7 +48,7 @@ export async function getGeminiLesson(weatherContext?: any, location?: string) {
 
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-flash-latest",
+      model: "gemini-1.5-flash",
       contents: prompt,
     });
 

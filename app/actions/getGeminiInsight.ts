@@ -30,7 +30,7 @@ export async function getGeminiInsight(weatherData: any) {
   try {
     // Using the clean string syntax for the new SDK
     const response = await ai.models.generateContent({
-      model: "gemini-flash-latest",
+      model: "gemini-1.5-flash",
       contents: prompt, // Simple string input as per user sample
     });
 
