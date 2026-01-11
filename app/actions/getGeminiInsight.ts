@@ -34,10 +34,8 @@ export async function getGeminiInsight(weatherData: any) {
       contents: prompt, // Simple string input as per user sample
     });
 
-    const text = response.text; // Property access as per user sample
-    
-    // Fallback if text is a function (just in case SDK version varies)
-    const finalContent = typeof text === 'function' ? (text as any)() : text;
+    // Handle response.text invocation safely preserving 'this' context if it's a method
+    const finalContent = typeof response.text === 'function' ? response.text() : response.text;
 
     if (!finalContent) throw new Error('No text in response');
     
@@ -72,7 +70,7 @@ export async function chatWithGemini(userMessage: string, context: { weather: an
 
     try {
         const response = await ai.models.generateContent({
-            model: "gemini-flash-latest",
+            model: "gemini-1.5-flash",
             contents: [
                 { role: 'user', parts: [{ text: systemPrompt }] },
                 ...history,
@@ -80,8 +78,7 @@ export async function chatWithGemini(userMessage: string, context: { weather: an
             ]
         });
 
-        const text = response.text;
-        return typeof text === 'function' ? (text as any)() : text;
+        return typeof response.text === 'function' ? response.text() : response.text;
     } catch (error) {
         console.error("Chat Error:", error);
         return "I'm having trouble connecting to the eco-network right now. Please try again later.";

@@ -52,8 +52,10 @@ export async function getGeminiLesson(weatherContext?: any, location?: string) {
       contents: prompt,
     });
 
-    const text = response.text;
-    const cleanText = (typeof text === 'function' ? (text as any)() : text)
+    // Safely retrieve text, preserving 'this' context if it's a method
+    const finalContent = typeof response.text === 'function' ? response.text() : response.text;
+    
+    const cleanText = finalContent
         ?.replace(/```json/g, '')
         .replace(/```/g, '')
         .trim();
